@@ -41,7 +41,7 @@ def setup_rag():
     # 4. Persistence setup
     PERSIST_DIR = "./storage"
     
-    if not os.path.exists(PERSIST_DIR):
+    if not os.path.exists(os.path.join(PERSIST_DIR, "docstore.json")):
         # 5. Create and Save Index
         if not os.path.exists("./data") or not os.listdir("./data"):
             print("No data found in ./data. Creating a sample file...")
@@ -52,6 +52,10 @@ def setup_rag():
         print("Loading documents from ./data...")
         documents = SimpleDirectoryReader("./data").load_data()
         
+        # Sanitize text to remove surrogate characters produced by PDF parsing
+        for doc in documents:
+            doc.set_content(doc.get_content().encode('utf-8', errors='replace').decode('utf-8'))
+
         print(f"Creating index from {len(documents)} documents...")
         index = VectorStoreIndex.from_documents(documents)
         
