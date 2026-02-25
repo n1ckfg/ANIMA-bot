@@ -1,4 +1,6 @@
 .DS_Store
 venv/
-*.pdf
+models/
+data/
+storage/
 

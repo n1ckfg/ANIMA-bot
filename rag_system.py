@@ -1,14 +1,11 @@
 import os
 import sys
-from llama_index.core import (
-    VectorStoreIndex, 
-    SimpleDirectoryReader, 
-    Settings, 
-    StorageContext, 
-    load_index_from_storage
-)
-from llama_index.llms.ollama import Ollama
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+import logging
+import warnings
+
+# Suppress logging and warnings from third-party libraries
+os.environ["HF_HUB_OFFLINE"] = "1"
+logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
 
 def setup_rag():
     # 1. Setup Ollama LLM
@@ -16,8 +13,14 @@ def setup_rag():
     llm = Ollama(model="llama3.1:8b", request_timeout=360.0)
     
     # 2. Setup Local Embedding Model
-    print("Initializing Local Embedding Model (BAAI/bge-small-en-v1.5)...")
-    embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+    # Now loading from the local ./models directory
+    model_path = "./models/bge-small-en-v1.5"
+    if not os.path.exists(model_path):
+        print(f"Warning: Local model not found at {model_path}. Falling back to Hub.")
+        embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+    else:
+        print(f"Initializing Local Embedding Model from {model_path}...")
+        embed_model = HuggingFaceEmbedding(model_name=model_path)
     
     # 3. Configure Global Settings
     Settings.llm = llm

@@ -41,7 +41,14 @@ else
     exit 1
 fi
 
-# 8. Create data directory if it doesn't exist
+# 8. Download and save the embedding model locally
+echo "Downloading and saving the local embedding model (bge-small-en-v1.5)..."
+if [ ! -d "models/bge-small-en-v1.5" ]; then
+    mkdir -p models
+    python3 -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer('BAAI/bge-small-en-v1.5'); model.save('models/bge-small-en-v1.5')"
+fi
+
+# 9. Create data directory if it doesn't exist
 if [ ! -d "data" ]; then
     echo "Creating data directory..."
     mkdir data
