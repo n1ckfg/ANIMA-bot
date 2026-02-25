@@ -33,3 +33,11 @@ This project implements a Retrieval-Augmented Generation (RAG) system using Llam
 - **Local Embeddings**: Uses `BAAI/bge-small-en-v1.5` via `llama-index-embeddings-huggingface` for high-performance, private embedding generation.
 - **Local LLM**: Uses `llama3.1:8b` via Ollama.
 - **Automated Indexing**: Automatically indexes all documents found in the `data/` folder.
+- **Index Persistence**: The created index is saved to the `storage/` directory. Subsequent runs will load this index automatically for faster startup.
+
+### Updating the Index
+If you add or remove files in the `data/` directory, simply delete the `storage/` folder and run the script again to rebuild the index:
+```bash
+rm -rf storage/
+./run.sh
+```
