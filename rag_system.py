@@ -6,6 +6,18 @@ import warnings
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
 logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+logging.getLogger("transformers").setLevel(logging.ERROR)
+warnings.filterwarnings("ignore", category=UserWarning)
+
+from llama_index.core import (
+    VectorStoreIndex, 
+    SimpleDirectoryReader, 
+    Settings, 
+    StorageContext, 
+    load_index_from_storage
+)
+from llama_index.llms.ollama import Ollama
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 def setup_rag():
     # 1. Setup Ollama LLM
