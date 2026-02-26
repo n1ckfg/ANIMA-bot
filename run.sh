@@ -18,4 +18,4 @@ fi
 # 3. Activate virtual environment and run the system
 echo "Starting ANIMA-bot RAG System..."
 source venv/bin/activate
-python3 rag_system.py
+python3 app.py #rag_system.py
