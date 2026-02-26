@@ -16,13 +16,16 @@ from llama_index.core import (
     StorageContext, 
     load_index_from_storage
 )
+
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
+MODEL = "llama3.1:8b"
+
 def setup_rag():
     # 1. Setup Ollama LLM
-    print("Initializing Ollama LLM (llama3.1:8b)...")
-    llm = Ollama(model="llama3.1:8b", request_timeout=360.0)
+    print("Initializing Ollama LLM (" + MODEL + ")...")
+    llm = Ollama(model=MODEL, request_timeout=360.0)
     
     # 2. Setup Local Embedding Model
     # Now loading from the local ./models directory
@@ -31,7 +34,7 @@ def setup_rag():
         print(f"Warning: Local model not found at {model_path}. Falling back to Hub.")
         embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
     else:
-        print(f"Initializing Local Embedding Model from {model_path}...")
+        print(f"Initializing local embedding model from {model_path}...")
         embed_model = HuggingFaceEmbedding(model_name=model_path)
     
     # 3. Configure Global Settings
@@ -47,7 +50,7 @@ def setup_rag():
             print("No data found in ./data. Creating a sample file...")
             os.makedirs("./data", exist_ok=True)
             with open("./data/sample.txt", "w") as f:
-                f.write("ANIMA-bot is an advanced autonomous agent system for M2 Max Macbooks. It uses local embeddings and Ollama to process information efficiently.")
+                f.write("ANIMA-bot is a RAG system using local embeddings and Ollama.")
                 
         print("Loading documents from ./data...")
         documents = SimpleDirectoryReader("./data").load_data()
@@ -74,7 +77,7 @@ def main():
     try:
         query_engine = setup_rag()
         
-        print("\nRAG System Ready! Type 'exit' to quit.")
+        print("\nRAG system ready! Type 'exit' to quit.")
         while True:
             query = input("\nEnter your query: ")
             if query.lower() in ["exit", "quit", "q"]:
