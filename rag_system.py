@@ -110,17 +110,28 @@ def setup_rag():
         skipped_count = 0
 
         # Add remaining documents with progress tracking and timeout
+        STATUS_INTERVAL = 10  # Print status every 10 seconds for slow documents
         for i, doc in enumerate(documents[1:], start=2):
             doc_start = time.time()
+            doc_name = doc.metadata.get('file_name', doc.metadata.get('file_path', f'doc {i}'))
             try:
                 with ThreadPoolExecutor(max_workers=1) as executor:
                     future = executor.submit(index.insert, doc)
-                    future.result(timeout=DOC_TIMEOUT)
+                    # Poll in intervals to provide status updates for slow documents
+                    while True:
+                        try:
+                            future.result(timeout=STATUS_INTERVAL)
+                            break  # Document completed
+                        except FuturesTimeoutError:
+                            doc_elapsed = time.time() - doc_start
+                            if doc_elapsed >= DOC_TIMEOUT:
+                                raise  # Exceeded total timeout
+                            print(f"\n  Processing: {doc_name} ({doc_elapsed:.0f}s elapsed...)")
                 last_doc_time = time.time() - doc_start
                 print_progress(i, total_docs, start_time, last_doc_time)
             except FuturesTimeoutError:
                 skipped_count += 1
-                print(f"\nSkipped document {i}/{total_docs}: exceeded {DOC_TIMEOUT}s timeout")
+                print(f"\nSkipped document {i}/{total_docs} ({doc_name}): exceeded {DOC_TIMEOUT}s timeout")
                 print_progress(i, total_docs, start_time, None)
 
         # Final progress line
