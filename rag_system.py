@@ -3,6 +3,7 @@ import sys
 import logging
 import warnings
 import time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
@@ -36,7 +37,7 @@ def format_time(seconds):
         return f"{hours}h {mins}m"
 
 
-def print_progress(current, total, start_time):
+def print_progress(current, total, start_time, last_doc_time=None):
     """Print progress report for embeddings generation."""
     elapsed = time.time() - start_time
     avg_time_per_doc = elapsed / current if current > 0 else 0
@@ -44,12 +45,13 @@ def print_progress(current, total, start_time):
     eta = avg_time_per_doc * remaining
 
     progress_pct = (current / total) * 100
-    bar_width = 30
+    bar_width = 20
     filled = int(bar_width * current / total)
     bar = "=" * filled + ">" + " " * (bar_width - filled - 1) if filled < bar_width else "=" * bar_width
 
+    last_doc_str = f" | Last: {format_time(last_doc_time)}" if last_doc_time is not None else ""
     print(f"\r[{bar}] {progress_pct:5.1f}% | {current}/{total} docs | "
-          f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}", end="", flush=True)
+          f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}{last_doc_str}", end="", flush=True)
 
 CHAT_MODEL_PROVIDER = "meta-llama"
 CHAT_MODEL = "llama3.1:8b"
@@ -100,18 +102,32 @@ def setup_rag():
         start_time = time.time()
 
         # Create index with first document to initialize
-        print_progress(1, total_docs, start_time)
+        DOC_TIMEOUT = 300  # seconds
+        doc_start = time.time()
         index = VectorStoreIndex.from_documents([documents[0]], show_progress=False)
+        last_doc_time = time.time() - doc_start
+        print_progress(1, total_docs, start_time, last_doc_time)
+        skipped_count = 0
 
-        # Add remaining documents with progress tracking
+        # Add remaining documents with progress tracking and timeout
         for i, doc in enumerate(documents[1:], start=2):
-            index.insert(doc)
-            print_progress(i, total_docs, start_time)
+            doc_start = time.time()
+            try:
+                with ThreadPoolExecutor(max_workers=1) as executor:
+                    future = executor.submit(index.insert, doc)
+                    future.result(timeout=DOC_TIMEOUT)
+                last_doc_time = time.time() - doc_start
+                print_progress(i, total_docs, start_time, last_doc_time)
+            except FuturesTimeoutError:
+                skipped_count += 1
+                print(f"\nSkipped document {i}/{total_docs}: exceeded {DOC_TIMEOUT}s timeout")
+                print_progress(i, total_docs, start_time, None)
 
         # Final progress line
         elapsed = time.time() - start_time
+        skipped_msg = f", {skipped_count} skipped" if skipped_count > 0 else ""
         print(f"\nCompleted {total_docs} documents in {format_time(elapsed)} "
-              f"(avg: {elapsed/total_docs:.2f}s/doc)")
+              f"(avg: {elapsed/total_docs:.2f}s/doc{skipped_msg})")
         
         print(f"Saving index to {PERSIST_DIR}...")
         index.storage_context.persist(persist_dir=PERSIST_DIR)
