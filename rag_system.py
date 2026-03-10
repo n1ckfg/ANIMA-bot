@@ -58,7 +58,7 @@ def setup_rag():
                 f.write("ANIMA-bot is a RAG system using local embeddings and Ollama.")
                 
         print("Loading documents from ./data...")
-        documents = SimpleDirectoryReader("./data").load_data()
+        documents = SimpleDirectoryReader("./data", recursive=True).load_data()
         
         # Sanitize text to remove surrogate characters produced by PDF parsing
         for doc in documents:
