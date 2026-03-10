@@ -2,7 +2,7 @@
 
 # ANIMA-bot RAG System Setup Script
 
-CHAT_MODEL_PROVIDER="meta-llama"
+#CHAT_MODEL="qwen3:4b-instruct"
 CHAT_MODEL="llama3.1:8b"
 
 DATA_MODEL_PROVIDER="BAAI"

@@ -5,6 +5,13 @@ import warnings
 import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 
+#CHAT_MODEL = "qwen3:4b-instruct"
+CHAT_MODEL="llama3.1:8b"
+
+DATA_MODEL_PROVIDER = "BAAI"
+#DATA_MODEL = "bge-small-en-v1.5"
+DATA_MODEL = "bge-m3"
+
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
 logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
@@ -52,13 +59,6 @@ def print_progress(current, total, start_time, last_doc_time=None):
     last_doc_str = f" | Last: {format_time(last_doc_time)}" if last_doc_time is not None else ""
     print(f"\r[{bar}] {progress_pct:5.1f}% | {current}/{total} docs | "
           f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}{last_doc_str}", end="", flush=True)
-
-CHAT_MODEL_PROVIDER = "meta-llama"
-CHAT_MODEL = "llama3.1:8b"
-
-DATA_MODEL_PROVIDER = "BAAI"
-#DATA_MODEL = "bge-small-en-v1.5"
-DATA_MODEL = "bge-m3"
 
 def setup_rag():
     # 1. Setup Ollama LLM
