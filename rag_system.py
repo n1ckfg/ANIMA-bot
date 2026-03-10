@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 import warnings
+import time
 
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
@@ -19,6 +20,36 @@ from llama_index.core import (
 
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+
+
+def format_time(seconds):
+    """Format seconds into human-readable string."""
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    elif seconds < 3600:
+        mins = int(seconds // 60)
+        secs = int(seconds % 60)
+        return f"{mins}m {secs}s"
+    else:
+        hours = int(seconds // 3600)
+        mins = int((seconds % 3600) // 60)
+        return f"{hours}h {mins}m"
+
+
+def print_progress(current, total, start_time):
+    """Print progress report for embeddings generation."""
+    elapsed = time.time() - start_time
+    avg_time_per_doc = elapsed / current if current > 0 else 0
+    remaining = total - current
+    eta = avg_time_per_doc * remaining
+
+    progress_pct = (current / total) * 100
+    bar_width = 30
+    filled = int(bar_width * current / total)
+    bar = "=" * filled + ">" + " " * (bar_width - filled - 1) if filled < bar_width else "=" * bar_width
+
+    print(f"\r[{bar}] {progress_pct:5.1f}% | {current}/{total} docs | "
+          f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}", end="", flush=True)
 
 CHAT_MODEL_PROVIDER = "meta-llama"
 CHAT_MODEL = "llama3.1:8b"
@@ -65,7 +96,22 @@ def setup_rag():
             doc.set_content(doc.get_content().encode('utf-8', errors='replace').decode('utf-8'))
 
         print(f"Creating index from {len(documents)} documents...")
-        index = VectorStoreIndex.from_documents(documents)
+        total_docs = len(documents)
+        start_time = time.time()
+
+        # Create index with first document to initialize
+        print_progress(1, total_docs, start_time)
+        index = VectorStoreIndex.from_documents([documents[0]], show_progress=False)
+
+        # Add remaining documents with progress tracking
+        for i, doc in enumerate(documents[1:], start=2):
+            index.insert(doc)
+            print_progress(i, total_docs, start_time)
+
+        # Final progress line
+        elapsed = time.time() - start_time
+        print(f"\nCompleted {total_docs} documents in {format_time(elapsed)} "
+              f"(avg: {elapsed/total_docs:.2f}s/doc)")
         
         print(f"Saving index to {PERSIST_DIR}...")
         index.storage_context.persist(persist_dir=PERSIST_DIR)
