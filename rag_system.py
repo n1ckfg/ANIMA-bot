@@ -20,19 +20,24 @@ from llama_index.core import (
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
-MODEL = "llama3.1:8b"
+CHAT_MODEL_PROVIDER = "meta-llama"
+CHAT_MODEL = "llama3.1:8b"
+
+DATA_MODEL_PROVIDER = "BAAI"
+#DATA_MODEL = "bge-small-en-v1.5"
+DATA_MODEL = "bge-m3"
 
 def setup_rag():
     # 1. Setup Ollama LLM
-    print("Initializing Ollama LLM (" + MODEL + ")...")
-    llm = Ollama(model=MODEL, request_timeout=360.0)
+    print("Initializing Ollama LLM (" + CHAT_MODEL + ")...")
+    llm = Ollama(model=CHAT_MODEL, request_timeout=360.0)
     
     # 2. Setup Local Embedding Model
     # Now loading from the local ./models directory
-    model_path = "./models/bge-small-en-v1.5"
+    model_path = "./models/" + DATA_MODEL
     if not os.path.exists(model_path):
         print(f"Warning: Local model not found at {model_path}. Falling back to Hub.")
-        embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+        embed_model = HuggingFaceEmbedding(model_name=DATA_MODEL_PROVIDER + "/" + DATA_MODEL)
     else:
         print(f"Initializing local embedding model from {model_path}...")
         embed_model = HuggingFaceEmbedding(model_name=model_path)

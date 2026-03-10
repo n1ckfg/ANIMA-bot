@@ -2,6 +2,13 @@
 
 # ANIMA-bot RAG System Setup Script
 
+CHAT_MODEL_PROVIDER="meta-llama"
+CHAT_MODEL="llama3.1:8b"
+
+DATA_MODEL_PROVIDER="BAAI"
+#DATA_MODEL="bge-small-en-v1.5"
+DATA_MODEL="bge-m3"
+
 # 1. Check for Python 3
 if ! command -v python3 &> /dev/null
 then
@@ -16,9 +23,9 @@ then
     exit 1
 fi
 
-# 3. Pull required LLM model (llama3.1:8b)
-echo "Ensuring llama3.1:8b is available in Ollama..."
-ollama pull llama3.1:8b
+# 3. Pull required LLM model
+echo "Ensuring $CHAT_MODEL is available in Ollama..."
+ollama pull $CHAT_MODEL
 
 # 4. Create virtual environment
 echo "Creating virtual environment..."
@@ -42,10 +49,10 @@ else
 fi
 
 # 8. Download and save the embedding model locally
-echo "Downloading and saving the local embedding model (bge-small-en-v1.5)..."
-if [ ! -d "models/bge-small-en-v1.5" ]; then
+echo "Downloading and saving the local embedding model ($DATA_MODEL)..."
+if [ ! -d "models/$DATA_MODEL" ]; then
     mkdir -p models
-    python3 -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer('BAAI/bge-small-en-v1.5'); model.save('models/bge-small-en-v1.5')"
+    python3 -c "from sentence_transformers import SentenceTransformer; model = SentenceTransformer('$DATA_MODEL_PROVIDER/$DATA_MODEL'); model.save('models/$DATA_MODEL')"
 fi
 
 # 9. Create data directory if it doesn't exist
@@ -55,4 +62,5 @@ if [ ! -d "data" ]; then
 fi
 
 echo "Setup complete!"
-echo "To start the RAG system, run: source venv/bin/activate && python3 rag_system.py"
+#echo "To start the RAG system, run: source venv/bin/activate && python3 rag_system.py"
+echo "To start the RAG system, use run.sh"
