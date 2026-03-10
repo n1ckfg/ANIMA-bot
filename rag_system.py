@@ -45,7 +45,7 @@ def print_progress(current, total, start_time, last_doc_time=None):
     eta = avg_time_per_doc * remaining
 
     progress_pct = (current / total) * 100
-    bar_width = 20
+    bar_width = 10
     filled = int(bar_width * current / total)
     bar = "=" * filled + ">" + " " * (bar_width - filled - 1) if filled < bar_width else "=" * bar_width
 
