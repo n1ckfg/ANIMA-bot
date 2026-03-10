@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, render_template, request, jsonify
 from rag_system import setup_rag
 
@@ -29,4 +30,5 @@ def query():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
+    logging.getLogger('werkzeug').setLevel(logging.ERROR)
     app.run(debug=True, host='0.0.0.0', port=8080)
