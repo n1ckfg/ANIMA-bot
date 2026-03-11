@@ -12,10 +12,19 @@ DATA_MODEL_PROVIDER = "BAAI"
 #DATA_MODEL = "bge-small-en-v1.5"
 DATA_MODEL = "bge-m3"
 
+RERANKER_MODEL_PROVIDER = "BAAI"
+RERANKER_MODEL = "bge-reranker-v2-m3"
+RERANKER_TOP_N = 5  # Number of documents to return after reranking
+
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
 logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
 logging.getLogger("transformers").setLevel(logging.ERROR)
+try:
+    from transformers.utils import logging as hf_logging
+    hf_logging.set_verbosity_error()
+except ImportError:
+    pass
 warnings.filterwarnings("ignore", category=UserWarning)
 
 from llama_index.core import (
@@ -28,7 +37,44 @@ from llama_index.core import (
 
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.core.postprocessor import SentenceTransformerRerank
+from llama_index.core.postprocessor.types import BaseNodePostprocessor
 
+
+class FixedSentenceTransformerRerank(SentenceTransformerRerank):
+    def __init__(
+        self,
+        top_n: int = 2,
+        model: str = "cross-encoder/stsb-distilroberta-base",
+        device: str = None,
+        keep_retrieval_score: bool = False,
+        trust_remote_code: bool = True,
+    ):
+        from sentence_transformers import CrossEncoder
+        from llama_index.core.utils import infer_torch_device
+        
+        device = device or infer_torch_device()
+        
+        # We call the grandparent's __init__ (BaseNodePostprocessor) 
+        # to avoid SentenceTransformerRerank's own __init__ which would 
+        # trigger a warning before we can override its _model.
+        BaseNodePostprocessor.__init__(
+            self,
+            top_n=top_n,
+            model=model,
+            device=device,
+            keep_retrieval_score=keep_retrieval_score,
+            trust_remote_code=trust_remote_code
+        )
+        
+        # Now we initialize _model with the fix
+        self._model = CrossEncoder(
+            model,
+            max_length=512, # Default as in SentenceTransformerRerank
+            device=device,
+            trust_remote_code=trust_remote_code,
+            tokenizer_kwargs={"fix_mistral_regex": False}
+        )
 
 def format_time(seconds):
     """Format seconds into human-readable string."""
@@ -60,6 +106,21 @@ def print_progress(current, total, start_time, last_doc_time=None):
     print(f"\r[{bar}] {progress_pct:5.1f}% | {current}/{total} docs | "
           f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}{last_doc_str}", end="", flush=True)
 
+def setup_reranker():
+    """Initialize the reranker model."""
+    reranker_path = "./models/" + RERANKER_MODEL
+    if not os.path.exists(reranker_path):
+        print(f"Warning: Local reranker not found at {reranker_path}.")
+        model_name = RERANKER_MODEL_PROVIDER + "/" + RERANKER_MODEL
+    else:
+        print(f"Initializing local reranker from {reranker_path}...")
+        model_name = reranker_path
+
+    return FixedSentenceTransformerRerank(
+        model=model_name,
+        top_n=RERANKER_TOP_N
+    )
+
 def setup_rag():
     # 1. Setup Ollama LLM
     print("Initializing Ollama LLM (" + CHAT_MODEL + ")...")
@@ -69,11 +130,17 @@ def setup_rag():
     # Now loading from the local ./models directory
     model_path = "./models/" + DATA_MODEL
     if not os.path.exists(model_path):
-        print(f"Warning: Local model not found at {model_path}. Falling back to Hub.")
-        embed_model = HuggingFaceEmbedding(model_name=DATA_MODEL_PROVIDER + "/" + DATA_MODEL)
+        print(f"Warning: Local model not found at {model_path}.")
+        embed_model = HuggingFaceEmbedding(
+            model_name=DATA_MODEL_PROVIDER + "/" + DATA_MODEL,
+            tokenizer_kwargs={"fix_mistral_regex": False}
+        )
     else:
         print(f"Initializing local embedding model from {model_path}...")
-        embed_model = HuggingFaceEmbedding(model_name=model_path)
+        embed_model = HuggingFaceEmbedding(
+            model_name=model_path,
+            tokenizer_kwargs={"fix_mistral_regex": False}
+        )
     
     # 3. Configure Global Settings
     Settings.llm = llm
@@ -148,8 +215,14 @@ def setup_rag():
         storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
         index = load_index_from_storage(storage_context)
     
-    # 7. Create Query Engine
-    return index.as_query_engine()
+    # 7. Setup Reranker
+    reranker = setup_reranker()
+
+    # 8. Create Query Engine with reranker
+    return index.as_query_engine(
+        similarity_top_k=10,  # Retrieve more docs initially for reranking
+        node_postprocessors=[reranker]
+    )
 
 def main():
     try:
