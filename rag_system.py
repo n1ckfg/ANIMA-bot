@@ -169,7 +169,7 @@ def setup_rag():
         start_time = time.time()
 
         # Create index with first document to initialize
-        DOC_TIMEOUT = 300  # seconds
+        DOC_TIMEOUT = 1500  # seconds
         doc_start = time.time()
         index = VectorStoreIndex.from_documents([documents[0]], show_progress=False)
         last_doc_time = time.time() - doc_start
