@@ -1,3 +1,4 @@
+import os
 import logging
 from flask import Flask, render_template, request, jsonify
 from rag_system import setup_rag
@@ -5,7 +6,9 @@ from rag_system import setup_rag
 app = Flask(__name__)
 
 # Initialize the RAG query engine globally
-query_engine = setup_rag()
+# Config path can be overridden via ANIMA_CONFIG environment variable
+config_path = os.environ.get("ANIMA_CONFIG", "./config.yaml")
+query_engine = setup_rag(config_path)
 
 @app.route('/')
 def index():

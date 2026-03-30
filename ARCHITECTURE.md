@@ -21,14 +21,18 @@ The entry point of the application is a Flask web server.
 - **API Endpoint:** Exposes a `/query` POST endpoint for programmatic access.
 - **Initialization:** On startup, it initializes the RAG system by loading the vector index into memory, ensuring that subsequent queries are processed quickly.
 
-## 2. RAG Core (`rag_system.py`)
+## 2. RAG Core (`rag_system.py` + `llm_backends.py`)
 
 The heart of the application, built using **LlamaIndex**. It handles the entire lifecycle of the RAG process:
 
+- **Configuration:** All settings are loaded from `config.yaml`, allowing easy customization without code changes.
 - **Ingestion & Indexing:** Reads formatted Markdown documents from the `./data/` directory and constructs a `VectorStoreIndex`.
 - **Embeddings:** Utilizes the local `BAAI/bge-m3` model (stored in `./models/bge-m3/`) to generate vector embeddings for the documents.
 - **Reranking:** To improve the quality of retrieved contexts before they are sent to the LLM, it employs a `FixedSentenceTransformerRerank` using the local `BAAI/bge-reranker-v2-m3` model (stored in `./models/bge-reranker-v2-m3/`).
-- **LLM Integration:** Interfaces with **Ollama** (defaulting to the `llama3.1:8b` model) to generate the final response based on the reranked context and the user's query.
+- **LLM Integration:** Supports multiple backends via `llm_backends.py`:
+  - **Ollama** (default): Local Ollama server
+  - **llama.cpp**: Direct GGUF model loading via llama-cpp-python
+  - **OpenAI-compatible**: Works with OpenAI API, LM Studio, vLLM, etc.
 - **Persistence:** Saves the generated vector index to the `./storage/` directory. This allows the system to avoid costly re-indexing on every restart.
 
 ## 3. Data Pipeline (`data_prep.sh`)
@@ -39,7 +43,18 @@ Data ingestion is separated from the main runtime to ensure clean, structured da
 - **Processing:** The `data_prep.sh` script utilizes **Docling** to parse and convert these raw documents into structured Markdown format.
 - **Output:** The resulting Markdown files are saved to the `./data/` directory, organized into subdirectories (e.g., `Anima_md/`, `Digearth_md/`), ready to be indexed by `rag_system.py`.
 
-## 4. Environment & Setup Scripts
+## 4. Configuration (`config.yaml`)
+
+The system is configured via a YAML file, allowing users to customize the LLM backend and other settings without modifying code:
+
+- **LLM Backend Selection:** Choose between `ollama`, `llamacpp`, or `openai` backends
+- **Model Settings:** Configure model names, paths, timeouts, and backend-specific options
+- **Embedding & Reranker:** Configure local model paths and parameters
+- **Storage Paths:** Customize data and index storage locations
+
+See `config.example.yaml` for full documentation of available options.
+
+## 5. Environment & Setup Scripts
 
 A set of shell scripts automates the setup and execution environment:
 

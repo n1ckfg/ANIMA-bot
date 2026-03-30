@@ -1,0 +1,71 @@
+# ANIMA-bot Configuration Example
+# Copy this file to config.yaml and customize for your setup
+#
+# Supported LLM backends:
+#   - ollama:   Local Ollama server (default)
+#   - llamacpp: Direct llama.cpp integration via llama-cpp-python
+#   - openai:   OpenAI API or compatible servers (LM Studio, vLLM, etc.)
+
+llm:
+  # Choose your backend
+  backend: "ollama"
+
+  # Model name (interpretation depends on backend)
+  # - ollama: model name as shown in `ollama list`
+  # - llamacpp: ignored, uses model_path instead
+  # - openai: model name for API
+  model: "llama3.1:8b"
+
+  # Request timeout in seconds
+  request_timeout: 360
+
+  # --- Ollama Settings ---
+  ollama:
+    base_url: "http://localhost:11434"
+
+  # --- llama.cpp Settings ---
+  # Requires: pip install llama-index-llms-llama-cpp
+  llamacpp:
+    # Path to GGUF model file
+    model_path: "./models/your-model.gguf"
+    # Context window size
+    n_ctx: 4096
+    # GPU layers (-1 = all, 0 = CPU only)
+    n_gpu_layers: -1
+
+  # --- OpenAI-compatible Settings ---
+  # Works with: OpenAI, LM Studio, vLLM, text-generation-inference
+  # Requires: pip install llama-index-llms-openai
+  openai:
+    # Override API base URL (null = use OpenAI default)
+    # Examples:
+    #   LM Studio: "http://localhost:1234/v1"
+    #   vLLM: "http://localhost:8000/v1"
+    api_base: null
+    # API key (or set OPENAI_API_KEY environment variable)
+    api_key: null
+
+# --- Embedding Model ---
+embeddings:
+  provider: "BAAI"
+  model: "bge-m3"
+  # Local path (falls back to HuggingFace download if not found)
+  local_path: "./models/bge-m3"
+
+# --- Reranker Model ---
+reranker:
+  provider: "BAAI"
+  model: "bge-reranker-v2-m3"
+  local_path: "./models/bge-reranker-v2-m3"
+  # Number of documents to return after reranking
+  top_n: 5
+
+# --- Retrieval Settings ---
+retrieval:
+  # Number of documents to retrieve before reranking
+  similarity_top_k: 10
+
+# --- Storage Paths ---
+storage:
+  persist_dir: "./storage"
+  data_dir: "./data"

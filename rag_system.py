@@ -3,18 +3,13 @@ import sys
 import logging
 import warnings
 import time
+import yaml
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 
-#CHAT_MODEL = "qwen3:4b-instruct"
-CHAT_MODEL="llama3.1:8b"
+from llm_backends import create_llm, get_backend_info
 
-DATA_MODEL_PROVIDER = "BAAI"
-#DATA_MODEL = "bge-small-en-v1.5"
-DATA_MODEL = "bge-m3"
-
-RERANKER_MODEL_PROVIDER = "BAAI"
-RERANKER_MODEL = "bge-reranker-v2-m3"
-RERANKER_TOP_N = 5  # Number of documents to return after reranking
+# Default config path
+DEFAULT_CONFIG_PATH = "./config.yaml"
 
 # Suppress logging and warnings from third-party libraries
 os.environ["HF_HUB_OFFLINE"] = "1"
@@ -28,17 +23,53 @@ except ImportError:
 warnings.filterwarnings("ignore", category=UserWarning)
 
 from llama_index.core import (
-    VectorStoreIndex, 
-    SimpleDirectoryReader, 
-    Settings, 
-    StorageContext, 
+    VectorStoreIndex,
+    SimpleDirectoryReader,
+    Settings,
+    StorageContext,
     load_index_from_storage
 )
 
-from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core.postprocessor import SentenceTransformerRerank
 from llama_index.core.postprocessor.types import BaseNodePostprocessor
+
+
+def load_config(config_path: str = DEFAULT_CONFIG_PATH) -> dict:
+    """Load configuration from YAML file."""
+    if not os.path.exists(config_path):
+        print(f"Config file not found at {config_path}, using defaults...")
+        return get_default_config()
+
+    with open(config_path, "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+
+    return config
+
+
+def get_default_config() -> dict:
+    """Return default configuration."""
+    return {
+        "llm": {
+            "backend": "ollama",
+            "model": "llama3.1:8b",
+            "request_timeout": 360,
+            "ollama": {"base_url": "http://localhost:11434"},
+        },
+        "embeddings": {
+            "provider": "BAAI",
+            "model": "bge-m3",
+            "local_path": "./models/bge-m3",
+        },
+        "reranker": {
+            "provider": "BAAI",
+            "model": "bge-reranker-v2-m3",
+            "local_path": "./models/bge-reranker-v2-m3",
+            "top_n": 5,
+        },
+        "retrieval": {"similarity_top_k": 10},
+        "storage": {"persist_dir": "./storage", "data_dir": "./data"},
+    }
 
 
 class FixedSentenceTransformerRerank(SentenceTransformerRerank):
@@ -52,11 +83,11 @@ class FixedSentenceTransformerRerank(SentenceTransformerRerank):
     ):
         from sentence_transformers import CrossEncoder
         from llama_index.core.utils import infer_torch_device
-        
+
         device = device or infer_torch_device()
-        
-        # We call the grandparent's __init__ (BaseNodePostprocessor) 
-        # to avoid SentenceTransformerRerank's own __init__ which would 
+
+        # We call the grandparent's __init__ (BaseNodePostprocessor)
+        # to avoid SentenceTransformerRerank's own __init__ which would
         # trigger a warning before we can override its _model.
         BaseNodePostprocessor.__init__(
             self,
@@ -66,7 +97,7 @@ class FixedSentenceTransformerRerank(SentenceTransformerRerank):
             keep_retrieval_score=keep_retrieval_score,
             trust_remote_code=trust_remote_code
         )
-        
+
         # Now we initialize _model with the fix
         self._model = CrossEncoder(
             model,
@@ -75,6 +106,7 @@ class FixedSentenceTransformerRerank(SentenceTransformerRerank):
             trust_remote_code=trust_remote_code,
             tokenizer_kwargs={"fix_mistral_regex": False}
         )
+
 
 def format_time(seconds):
     """Format seconds into human-readable string."""
@@ -106,60 +138,88 @@ def print_progress(current, total, start_time, last_doc_time=None):
     print(f"\r[{bar}] {progress_pct:5.1f}% | {current}/{total} docs | "
           f"Elapsed: {format_time(elapsed)} | ETA: {format_time(eta)}{last_doc_str}", end="", flush=True)
 
-def setup_reranker():
+
+def setup_reranker(config: dict):
     """Initialize the reranker model."""
-    reranker_path = "./models/" + RERANKER_MODEL
-    if not os.path.exists(reranker_path):
-        print(f"Warning: Local reranker not found at {reranker_path}.")
-        model_name = RERANKER_MODEL_PROVIDER + "/" + RERANKER_MODEL
+    reranker_config = config.get("reranker", {})
+    provider = reranker_config.get("provider", "BAAI")
+    model = reranker_config.get("model", "bge-reranker-v2-m3")
+    local_path = reranker_config.get("local_path", f"./models/{model}")
+    top_n = reranker_config.get("top_n", 5)
+
+    if os.path.exists(local_path):
+        print(f"Initializing local reranker from {local_path}...")
+        model_name = local_path
     else:
-        print(f"Initializing local reranker from {reranker_path}...")
-        model_name = reranker_path
+        print(f"Warning: Local reranker not found at {local_path}.")
+        model_name = f"{provider}/{model}"
 
     return FixedSentenceTransformerRerank(
         model=model_name,
-        top_n=RERANKER_TOP_N
+        top_n=top_n
     )
 
-def setup_rag():
-    # 1. Setup Ollama LLM
-    print("Initializing Ollama LLM (" + CHAT_MODEL + ")...")
-    llm = Ollama(model=CHAT_MODEL, request_timeout=360.0)
-    
-    # 2. Setup Local Embedding Model
-    # Now loading from the local ./models directory
-    model_path = "./models/" + DATA_MODEL
-    if not os.path.exists(model_path):
-        print(f"Warning: Local model not found at {model_path}.")
-        embed_model = HuggingFaceEmbedding(
-            model_name=DATA_MODEL_PROVIDER + "/" + DATA_MODEL,
-            tokenizer_kwargs={"fix_mistral_regex": False}
-        )
+
+def setup_embeddings(config: dict):
+    """Initialize the embedding model."""
+    embed_config = config.get("embeddings", {})
+    provider = embed_config.get("provider", "BAAI")
+    model = embed_config.get("model", "bge-m3")
+    local_path = embed_config.get("local_path", f"./models/{model}")
+
+    if os.path.exists(local_path):
+        print(f"Initializing local embedding model from {local_path}...")
+        model_name = local_path
     else:
-        print(f"Initializing local embedding model from {model_path}...")
-        embed_model = HuggingFaceEmbedding(
-            model_name=model_path,
-            tokenizer_kwargs={"fix_mistral_regex": False}
-        )
-    
+        print(f"Warning: Local model not found at {local_path}.")
+        model_name = f"{provider}/{model}"
+
+    return HuggingFaceEmbedding(
+        model_name=model_name,
+        tokenizer_kwargs={"fix_mistral_regex": False}
+    )
+
+
+def setup_rag(config_path: str = DEFAULT_CONFIG_PATH):
+    """
+    Initialize the RAG system.
+
+    Args:
+        config_path: Path to configuration YAML file
+
+    Returns:
+        Query engine ready for use
+    """
+    # Load configuration
+    config = load_config(config_path)
+
+    # 1. Setup LLM from configured backend
+    print(f"Initializing LLM: {get_backend_info(config)}...")
+    llm = create_llm(config)
+
+    # 2. Setup Local Embedding Model
+    embed_model = setup_embeddings(config)
+
     # 3. Configure Global Settings
     Settings.llm = llm
     Settings.embed_model = embed_model
-    
+
     # 4. Persistence setup
-    PERSIST_DIR = "./storage"
-    
-    if not os.path.exists(os.path.join(PERSIST_DIR, "docstore.json")):
+    storage_config = config.get("storage", {})
+    persist_dir = storage_config.get("persist_dir", "./storage")
+    data_dir = storage_config.get("data_dir", "./data")
+
+    if not os.path.exists(os.path.join(persist_dir, "docstore.json")):
         # 5. Create and Save Index
-        if not os.path.exists("./data") or not os.listdir("./data"):
-            print("No data found in ./data. Creating a sample file...")
-            os.makedirs("./data", exist_ok=True)
-            with open("./data/sample.txt", "w") as f:
-                f.write("ANIMA-bot is a RAG system using local embeddings and Ollama.")
-                
-        print("Loading documents from ./data...")
-        documents = SimpleDirectoryReader("./data", recursive=True).load_data()
-        
+        if not os.path.exists(data_dir) or not os.listdir(data_dir):
+            print(f"No data found in {data_dir}. Creating a sample file...")
+            os.makedirs(data_dir, exist_ok=True)
+            with open(os.path.join(data_dir, "sample.txt"), "w") as f:
+                f.write("ANIMA-bot is a RAG system using local embeddings and configurable LLM backends.")
+
+        print(f"Loading documents from {data_dir}...")
+        documents = SimpleDirectoryReader(data_dir, recursive=True).load_data()
+
         # Sanitize text to remove surrogate characters produced by PDF parsing
         for doc in documents:
             doc.set_content(doc.get_content().encode('utf-8', errors='replace').decode('utf-8'))
@@ -206,48 +266,55 @@ def setup_rag():
         skipped_msg = f", {skipped_count} skipped" if skipped_count > 0 else ""
         print(f"\nCompleted {total_docs} documents in {format_time(elapsed)} "
               f"(avg: {elapsed/total_docs:.2f}s/doc{skipped_msg})")
-        
-        print(f"Saving index to {PERSIST_DIR}...")
-        index.storage_context.persist(persist_dir=PERSIST_DIR)
+
+        print(f"Saving index to {persist_dir}...")
+        index.storage_context.persist(persist_dir=persist_dir)
     else:
         # 6. Load existing index
-        print(f"Loading existing index from {PERSIST_DIR}...")
-        storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
+        print(f"Loading existing index from {persist_dir}...")
+        storage_context = StorageContext.from_defaults(persist_dir=persist_dir)
         index = load_index_from_storage(storage_context)
-    
+
     # 7. Setup Reranker
-    reranker = setup_reranker()
+    reranker = setup_reranker(config)
 
     # 8. Create Query Engine with reranker
+    retrieval_config = config.get("retrieval", {})
+    similarity_top_k = retrieval_config.get("similarity_top_k", 10)
+
     return index.as_query_engine(
-        similarity_top_k=10,  # Retrieve more docs initially for reranking
+        similarity_top_k=similarity_top_k,
         node_postprocessors=[reranker]
     )
 
+
 def main():
     try:
-        query_engine = setup_rag()
-        
+        # Allow config path override via command line
+        config_path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_CONFIG_PATH
+        query_engine = setup_rag(config_path)
+
         print("\nRAG system ready! Type 'exit' to quit.")
         while True:
             query = input("\nEnter your query: ")
             if query.lower() in ["exit", "quit", "q"]:
                 break
-            
+
             if not query.strip():
                 continue
-                
+
             print("\nSearching and generating response...")
             response = query_engine.query(query)
             print("\nResponse:")
             print("-" * 20)
             print(str(response))
             print("-" * 20)
-            
+
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
         print(f"\nAn error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()
