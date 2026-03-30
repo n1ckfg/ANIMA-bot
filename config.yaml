@@ -3,8 +3,8 @@
 
 llm:
   # Backend: "ollama", "llamacpp", or "openai"
-  backend: "ollama"
-  model: "llama3.1:8b"
+  backend: "llamacpp"
+  model: "qwen3.5:27b"
   request_timeout: 360
 
   # Ollama-specific settings
@@ -13,8 +13,8 @@ llm:
 
   # llama.cpp-specific settings (used when backend: "llamacpp")
   llamacpp:
-    model_path: "./models/llama3.gguf"
-    n_ctx: 4096
+    model_path: "/mnt/c/llama.cpp/models/Qwen3.5-27B-Q4_K_M.gguf"
+    n_ctx: 131072
     n_gpu_layers: -1  # -1 = use all available GPU layers
 
   # OpenAI-compatible API settings (used when backend: "openai")

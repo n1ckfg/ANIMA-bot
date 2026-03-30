@@ -3,11 +3,11 @@
 # ANIMA-bot RAG System Runner
 
 # 1. Check if Ollama server is running
-if ! curl -s http://localhost:11434/api/tags > /dev/null; then
-    echo "Error: Ollama server is not running."
-    echo "Please start the Ollama application or run 'ollama serve' in another terminal."
-    exit 1
-fi
+#if ! curl -s http://localhost:11434/api/tags > /dev/null; then
+#    echo "Error: Ollama server is not running."
+#    echo "Please start the Ollama application or run 'ollama serve' in another terminal."
+#    exit 1
+#fi
 
 # 2. Check if virtual environment exists
 if [ ! -d "venv" ]; then

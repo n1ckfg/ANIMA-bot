@@ -1,6 +1,7 @@
 flask
 llama-index
 llama-index-llms-ollama
+llama-index-llms-llama-cpp
 llama-index-embeddings-huggingface
 llama-index-readers-file
 pypdf
@@ -9,5 +10,4 @@ docling
 pyyaml
 
 # Optional LLM backends (uncomment as needed):
-# llama-index-llms-llama-cpp   # For llama.cpp/GGUF models
 # llama-index-llms-openai      # For OpenAI API or compatible servers
