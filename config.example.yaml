@@ -63,9 +63,47 @@ reranker:
 # --- Retrieval Settings ---
 retrieval:
   # Number of documents to retrieve before reranking
-  similarity_top_k: 10
+  # Higher = better reranking candidates but slower
+  similarity_top_k: 25
+
+  # Enable hybrid search (BM25 + vector)
+  # Improves keyword matching alongside semantic search
+  hybrid_search: true
+
+  # Balance between vector and BM25 search
+  # 0 = BM25 only, 1 = vector only, 0.5 = balanced
+  hybrid_alpha: 0.5
+
+# --- Document Chunking ---
+chunking:
+  # Target chunk size in tokens
+  chunk_size: 512
+  # Overlap between chunks for context continuity
+  chunk_overlap: 64
+  # Splitting method: "sentence" or "semantic"
+  # "semantic" uses embeddings to find natural breakpoints (slower)
+  splitting_method: "sentence"
+
+# --- Query Enhancement ---
+query:
+  # Enable HyDE (Hypothetical Document Embeddings)
+  # Generates a hypothetical answer to improve retrieval
+  enable_hyde: true
+  # Prompt template for HyDE generation
+  hyde_prompt: "Write a detailed passage that would answer this question: {query}"
+
+# --- Caching ---
+caching:
+  # Enable disk-based query caching
+  enabled: true
+  # Cache directory
+  cache_dir: "./cache"
 
 # --- Storage Paths ---
 storage:
+  # Directory for vector index persistence
   persist_dir: "./storage"
+  # Directory containing documents to index
   data_dir: "./data"
+  # File tracking indexed document versions (for incremental updates)
+  index_version_file: "./storage/index_version.json"

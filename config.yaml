@@ -34,8 +34,24 @@ reranker:
   top_n: 5
 
 retrieval:
-  similarity_top_k: 10
+  similarity_top_k: 25  # Increased for better reranking candidates
+  hybrid_search: true   # Enable BM25 + Vector hybrid search
+  hybrid_alpha: 0.5     # Balance: 0=BM25 only, 1=vector only, 0.5=balanced
+
+chunking:
+  chunk_size: 512
+  chunk_overlap: 64
+  splitting_method: "sentence"  # "sentence" or "semantic"
+
+query:
+  enable_hyde: true  # Hypothetical Document Embeddings for better retrieval
+  hyde_prompt: "Write a detailed passage that would answer this question: {query}"
+
+caching:
+  enabled: true
+  cache_dir: "./cache"
 
 storage:
   persist_dir: "./storage"
   data_dir: "./data"
+  index_version_file: "./storage/index_version.json"  # Track indexed documents

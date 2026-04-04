@@ -8,6 +8,8 @@ pypdf
 docx2txt
 docling
 pyyaml
+rank-bm25              # For hybrid BM25 search
+diskcache              # For query/embedding caching
 
 # Optional LLM backends (uncomment as needed):
 # llama-index-llms-openai      # For OpenAI API or compatible servers
