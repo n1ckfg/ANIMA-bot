@@ -44,7 +44,7 @@ chunking:
   splitting_method: "sentence"  # "sentence" or "semantic"
 
 query:
-  enable_hyde: true  # Hypothetical Document Embeddings for better retrieval
+  enable_hyde: false  # Hypothetical Document Embeddings for better retrieval
   hyde_prompt: "Write a detailed passage that would answer this question: {query}"
 
 caching:
