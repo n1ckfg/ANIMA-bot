@@ -1,0 +1,1 @@
+# Setting the tone of the writing, Shell calls its communique 'a message' -the connation - unbiased, representation.

@@ -1,0 +1,1 @@
+She wrote: "I want you to know I love you.  This separtation could	easily depress me.  So I'm trying very hard to stay positive.  I need your	help with that...letters and calls.  Here's my love...It's all for	you....Warm hugs and many kisses."

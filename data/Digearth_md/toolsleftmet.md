@@ -1,0 +1,6 @@
+- [**Sting**](08Sep88.htm)
+- [**Perspective**](31Jan87.htm)
+- [**Mind and Metaphor**](11Oct91.htm)
+- [**Life Cycle**](02Apr90.htm)
+- [**Ethereal Metaphors**](17Dec91.htm)
+- [**Make a Metaphor... feel the model**](metaphorgen.htm)

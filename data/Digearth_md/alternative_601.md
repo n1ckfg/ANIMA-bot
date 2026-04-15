@@ -1,0 +1,1 @@
+So certain, so solitary, so like the dead, without compromise, without	truce.  A machine manufacturing itself, itself. Endless,	without compromise, without truce. Hysterically indifferent	brutality masquerading as a worldwise sophistication (the fashionable and	parochial TV-ish blas⁄ of the orgy-media crowd.

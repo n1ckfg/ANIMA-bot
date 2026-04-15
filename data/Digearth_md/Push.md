@@ -1,0 +1,3 @@
+## [Push Button Automatic Instance The new telecommunications technologies, hardware and software, make plain the contradictions and complexities of the radical (i.e. root) interconnectivity of our world.  Words have become electronic, pictures interactive, ideas immediate, and the instantaneousness of networks reveals a hazard of transparency into the potentialities of our webbed mind. 0 math is](0_816.htm)
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->

@@ -1,0 +1,1 @@
+Today you will	say, " no i did what was right yesterday."   You will absolve yourself as	in surrender, acceptance and loss, you will claim your right.

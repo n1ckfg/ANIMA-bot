@@ -1,0 +1,1 @@
+As such it is monstrous	in its adaptability, its aptitude to transmigrate, to transform itself into	something else. A something else that is yet, only a facet of its	basic impossibility - stainless, uncorrupted, ageless, without	substance.

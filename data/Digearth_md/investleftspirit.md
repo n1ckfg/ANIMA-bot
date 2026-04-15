@@ -1,0 +1,8 @@
+- [**Soft Works**](20Apr90.htm)
+- [**Our Reason**](23Dec89.htm)
+- [**Mind and Metaphor**](11Oct91.htm)
+- [**Detecting our Spirit**](11aOct91.htm)
+- [**Life Cycle**](02Apr90.htm)
+- [**Ethereal Metaphors**](17Dec91.htm)
+- [**Yin - Yang**](03Dec91.htm)
+- [**Listen**](29aJun87.htm)

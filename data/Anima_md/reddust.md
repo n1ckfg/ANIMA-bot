@@ -1,0 +1,19 @@
+# Towards A Furious Philosophy Of The Discrete
+
+## "What a beautiful hill!" They all exclaimed, enraptured.
+
+" This hill, which at first shuts out the view, heightens expectations.
+
+If one were to see the whole park immediately upon entering, the
+
+effect would be monotonous, " remarked Chia Ching.
+
+"Quite so!" the others agreed.
+
+*From "The Dream Of The Red Chamber"*
+
+*(One of the Classics of Chinese literature)*
+
+*By Ts'ao Hsueh-Ch'*
+
+reddust.html/cisr/oliver@cisr.bc.ca

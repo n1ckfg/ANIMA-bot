@@ -1,0 +1,1 @@
+There isn't a month that goes by that I don't see bombs	falling  from the kindness of even the bluest sky.  Who knows what he was	conceiving with my mother.

@@ -1,0 +1,3 @@
+#### [**FOOTNOTES HERE!**](footnt.html)
+
+NOW, TIME HAS NOTHING SACRED LEFT ....GONE .....YOU OWE! ....the telephone company, Internet Service Provider, your taylor, car rental company, cel-phone company, restaurants where you shmoozed with the WORLD-COM TELE-FILM execs ...and you OWE MORE!  to Intel, Microsoft, your hardware software life-ware upgrade MANUFACTURERS, you owe MONEY for EACH and EVERY one of those 125 million transistors on your typical PC 'workstation', of which you WANT MORE ....POWER!  SPEED! FASTER ACCESS! ...so you can INTERACT ....and do ....more (TIME?)....

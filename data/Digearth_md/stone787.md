@@ -1,0 +1,3 @@
+## [stones stones "...things are said and are thought by a Speech and by a Thought which we do not have but which has us.  There is said to be a wall between ourselves and the other, but it is a wall we build together, each putting his stone in the niche left by the other." Merleau-Ponty, "Signs" 0 is ground](0_816.htm)
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->

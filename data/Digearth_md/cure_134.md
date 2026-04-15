@@ -1,0 +1,1 @@
+The cure of  neurosis, however it is carried out, is some method	by which the patient maybe brought out of this unconscious obsession with	past events to a full awareness of events taking place now and the capacity	for  responding appropriately and realistically to these present events in	present terms and not in past terms.

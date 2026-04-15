@@ -1,0 +1,3 @@
+```
+About Paul Virilio: Paul Virilio was born in Paris in 1932.  He served as director of the Ecole Speciale d'Architecture from 1972 to 1975, and has been on the editorial board of such periodicals as Esprit, Cause Commune, Critiques and Traverses.  He is currently an editorial director of Editions Galilee in Paris.  Paul Virilio is the author of Bunker Archeologie (1975), l'insecurite du territoire (1976), Speed and Politics (1977) , Popular Defense and Ecological Struggles (1978), l'esthetique de la disparition (1980) Pure War (with Sylvere Lotringer, 1983) logistique de la perception (1984) and l'espace critique (1984), as well as of numerous technical works.
+```

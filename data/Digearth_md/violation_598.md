@@ -1,0 +1,3 @@
+Eternity violates
+
+time.

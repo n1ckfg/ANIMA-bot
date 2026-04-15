@@ -1,0 +1,1 @@
+A more raveled	understanding may express a more horrendous complication - a joy in the end	by our parts - a healthy parallax of our staunch i's into a final sight of	mortality - [the parody of parable](bird_647.html) .

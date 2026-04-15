@@ -1,0 +1,3 @@
+I was Spartan.  I had	no choice.  It was either that or the stiffing release of death.  Seriously.	  The idea of Horse crossed my mind consistently each morning for months on	end.   Main Street was around the corner and the quality was 100%.     I was	reaching into my late 30's, alone, a bachelor, again.  My relationship	debris had reached tremendous heights such that I felt I was holed up in a	bunker. Schoenberg, a computer, a passport, Buddhism, a string of	past lovers, an unconventional career. A motorcycle makes sense	about now.
+
+:- [wheel](wheel_853.html) - [inland](inland_633.html) - [sheep](sheep_872.html) - [weak](weak_607.html) - [needs](needs_787.html)

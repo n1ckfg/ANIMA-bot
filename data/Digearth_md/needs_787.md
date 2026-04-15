@@ -1,0 +1,1 @@
+I got involved with her for the usual reason. 	 It was more than perfect. Took over my field of vision. Who	needs perspective when your living on the horizon?

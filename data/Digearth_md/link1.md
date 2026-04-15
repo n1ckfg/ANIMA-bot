@@ -1,0 +1,1 @@
+### [View with Netscape 3.0, let document override colours in preferences. Install Plug-Ins: Real Audio, QuickTime, and Shockwave. If you are running on earlier versions of Netscape or other browsers that don't support image maps direct yourself here.](https://web.archive.org/web/19990429070033/http://home.netscape.com/)

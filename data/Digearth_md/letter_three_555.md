@@ -1,0 +1,1 @@
+She wrote: "Just talked to you on the phone.  Now I'm trying not to cry...I'm really	missing you..."

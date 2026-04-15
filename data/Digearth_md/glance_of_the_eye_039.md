@@ -1,0 +1,1 @@
+In	some Asian cultures the idea of a mirror is the idea of the very absence	of all signs.

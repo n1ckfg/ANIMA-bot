@@ -1,0 +1,15 @@
+**Ideas**
+
+- [**Our Reason**](23Dec89.htm)
+- [**Resonant Holography**](19Oct91.htm)
+- [**Soft Works**](20Apr90.htm)
+- [**Pre-Thoughts**](13Dec91.htm)
+- [**Mind and Metaphor**](11Oct91.htm)
+- [**Life Cycle**](02Apr90.htm)
+- [**Ethereal Metaphors**](17Dec91.htm)
+- [**Detecting our Spirit**](11aOct91.htm)
+- [**Listen**](29aJun87.htm)
+- [**Yin - Yang**](03Dec91.htm)
+- [**Nothing Like**](29Jun87.htm)
+- [**Time Now**](01Nov92.htm)
+- [**Perspective**](31Jan87.htm)

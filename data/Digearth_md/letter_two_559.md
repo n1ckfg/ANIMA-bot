@@ -1,0 +1,1 @@
+She wrote: My trust for you is	strong and deep...I want our love to grow together and make us as close as I	believe possible.

@@ -1,0 +1,1 @@
+[We cannot attain the impartiality of	the sky.](plane_crash_985.html)

@@ -1,0 +1,1 @@
+with death exists in these somnambulists that surround me and that	are me. There is the occasional acknowledgment, vague prescience of moments	in a [dream time](form_a_circle_289.html) that	neither has any control over. Primary tyranny, the one	that cannot be finished with, the one that we hear most clearly in the blunt	cry of infants.

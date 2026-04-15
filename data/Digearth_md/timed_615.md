@@ -1,0 +1,1 @@
+And each day brings home a	package of self, atick in our circling containment timed within	the incessant revolutions of the Sun.

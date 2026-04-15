@@ -1,0 +1,1 @@
+It took place in a half light world.  In that world only she and I	existed,  or rather I existed for her.  I submitted as if she were my life, 	I submitted as if she was my holiday from the ardours of life - a walking,	talking, breathing, death wish - the sex was that good.

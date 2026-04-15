@@ -1,0 +1,1 @@
+# [**BEWARE! ...Click at your own RISK ....THESE will KILL your Win 95 -  NT 4.0 systems ......TIME is running out ... X X If you know of any other bombs, just send me the source code and another X will appear...**](http://web.capcollege.bc.ca/cgi-bin/stupid-perl-tricks/nph-teardrop.pl)

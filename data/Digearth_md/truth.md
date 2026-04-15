@@ -1,0 +1,1 @@
+# As if truth was outside the human sphere, asif truth was not a cause itself. As if money and profit has notsubjected truth to its 'cause' however ignoble, INNUMERABLE TIMES. The'facts' of the 'real world' is a dispassionates adults' concern, and a moneyedadult at that. So run about now, and let the grownups handleeverything.

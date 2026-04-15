@@ -1,0 +1,1 @@
+"Multiplicity which is not reduced to unity is confusion. Unity which does not depend on multiplicity is tyranny."- Pascal

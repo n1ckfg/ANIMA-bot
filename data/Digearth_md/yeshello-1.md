@@ -1,0 +1,1 @@
+`"I was` [`predestined`](splitbrain.html) `to Memory."O.V. de Milosz,  "L'amoureuse Initiation"`

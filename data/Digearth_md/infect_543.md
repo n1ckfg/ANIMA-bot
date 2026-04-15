@@ -1,0 +1,1 @@
+Ilost myself in your	neurotic jealousy tendency and became infected by it. Your	demands on my fidelity was only a reflection of your desire for power over	me. [When I succumbed to your	will, and when I expressed me equal need for your fidelity to me you smacked	me, then pissed on me, spat on me and then abandoned me as I lay destroyed	from your beating.](red_330.html)

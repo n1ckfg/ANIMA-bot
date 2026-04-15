@@ -1,0 +1,3 @@
+#### [**PRESS HERE TO ESCAPE!**](bomb-x.html)
+
+.........THE 'MANY FORMS OF DOING TIME': 1.  LOOKING FOR SOMETHING 'USEFUL' ON THE NET ....like empty bottles, in an alley, for some change ......2. PICKING THE DAMNED 'USEFUL' UP and placing it carefully in the cart ......"Downloading!", they used to call it once .....3. CASHING IN ON THE 'USEFUL'! ......"Get the latest upgrades now!", you know the score .......4. TRYING TO FIND A PLACE TO PUT IT IN ........."What? Config-SYS ERROR SIGNS? ....You Geek!" ......and down the lane to .......5. START ALL OVER, GAIN? ....while talking to yourself A LOT about FACTS FACTS PROTOCOL.....

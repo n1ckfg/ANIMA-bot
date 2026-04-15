@@ -1,0 +1,1 @@
+Janus' journey	takes precedent over everyone and everything else.

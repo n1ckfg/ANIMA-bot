@@ -1,0 +1,1 @@
+Iknow you. Iconfess my betrayal of you ...before your betrayal of me! (Laura-- you	phoned twice) But the truth was I

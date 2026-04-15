@@ -1,0 +1,1 @@
+# Indeed, every good schoolchild knows that it's he who pays the piper who calls the tune.  Over 80% of Nigeria's income is from oil.Shell being the major collaborator.

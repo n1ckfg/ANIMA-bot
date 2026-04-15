@@ -1,0 +1,49 @@
+# Towards A Furious Philosophy Of The Discrete
+
+## From Tijuana to Matamoros
+
+[Solidarity](definitelytime.html)
+
+Concerning Chiapas and NAFTA:
+
+"The problem is not limited to a small fringe group in Chiapas...
+
+In July issue of the New York Times it was stated that the trade
+
+agreement was expected to destroy the corn economy that sustains
+
+Mexico's indigenous peoples - some 29% of the population...Similar effects
+
+can be expected in Canada, where efforts are being made to pass
+
+the First Nations Chartered Lands Act, which will make it easier
+
+for corporations to get at natural resources on Indian Lands..."
+
+Jeffrey Wollock,New York, Jan. 6 1994.  Research Director of the Foundation, the information and research service of the Native
+
+American Council of New York.
+
+In Mexico: The gap between poor and rich is wider today
+
+than ever before and getting worse.  A decade or so ago, the middle class
+
+made up more than 30
+
+percent of the Mexican Republic; today, because it is no more than
+
+one-fifth.
+
+From Tijuana to Matamoros, where more than 2,000 mostly
+
+American-owned maquiladoras employ largely young women
+
+14 to 24 years old, paying them 60 cents to a dollar 20 an hour,
+
+more and more of them and their families live in cardboard and plywood
+
+shacks lacking electricity, toilets, denied healthcare and schools for
+
+their childerns...
+
+chiapas.html/cisr/oliver@cisr.bc.ca

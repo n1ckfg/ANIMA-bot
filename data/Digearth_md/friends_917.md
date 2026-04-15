@@ -1,0 +1,1 @@
+O.K. I thought how am I	going to get out of this without irritating her.  She's just dreaming.  I	have to be delicate.

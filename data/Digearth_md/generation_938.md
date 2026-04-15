@@ -1,0 +1,1 @@
+What are	all these definitions but little deaths... You want to know the	particulars of my blindness?  ...My father ejaculated into each my babies	eyes...My mother tried to help by painting burning horses...The shard of	history i call myself found an indescribable pleasure in the blank.  Where	else could i live but along a coast.  i moved to Vancouver.

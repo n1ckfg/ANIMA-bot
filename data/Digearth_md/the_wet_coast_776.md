@@ -1,0 +1,1 @@
+[VANCOUVER](multiple_580.html) Continual rain,	sudden showers of blessed sunlight.  Mountains surround, a womb from the	rest of the continent.

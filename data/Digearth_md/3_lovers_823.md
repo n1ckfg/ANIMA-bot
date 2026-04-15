@@ -1,0 +1,1 @@
+3 lovers divide abed into a never ending decision to live. One is alone, the other two, blank inlust, a spectacle,  shiny red sheet contorted into a single organism ofdesire. Withering excitingly, the definitions of [formlessness and form entices.](max_ernst_821.html) Voyeur looks on - drops money into a slot and is reborn.

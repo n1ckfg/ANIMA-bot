@@ -1,0 +1,4 @@
+.....WHAT IS DIALECTICAL COLLAGE-MONTAGE DOING HERE? ....THEORY OF? ......BRANCHING TO CHAOS? .....FRACTALIZED THOUGHT?  ......NOT POLITICS? ....."IS THIS WHAT YOU MEANT?", POOR SERGEI EISENSTEIN .....MISRECOGNIZED BY PAN-CAPITALIST PO-MO THEORISTS AS: "THIS IS A MARQUEE AND BLINK TEST!" .....NOT GOEBELS PROPAGANDA, NOW ADVERTISING ON THE INTERNET?.....
+
+| EXPLORE THE FRAGRANCE!  <!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->   |
+|---------------------------------------------------------------------------------------------------------------------------|

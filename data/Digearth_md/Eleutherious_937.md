@@ -1,0 +1,1 @@
+The atemporality of eternity, conditions by absence -the	happy sneer of  a white cat in	heaven Eleutherios I can not be other than i am And my	depth is your surface and your surface is a constant shine of power and pain	/you see you are blind/ And you call me your child but i am your	father.

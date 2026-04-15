@@ -1,0 +1,1 @@
+The brain's limbic ring curves, overlapping the oral-genital areas.

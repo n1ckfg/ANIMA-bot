@@ -1,0 +1,1 @@
+All parts of the organism form a circle... therefore, every part is both beginning and end.

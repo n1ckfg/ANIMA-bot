@@ -1,0 +1,1 @@
+Attempt with all	limbs to point to the sun, like an idiot, pointing out the obvious. I am met with blank stares of incomprehesion as if I was a seller of mirrors	in the city of the blind.

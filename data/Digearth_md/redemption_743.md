@@ -1,0 +1,1 @@
+We don't	have enough mouths to speak of our pain.

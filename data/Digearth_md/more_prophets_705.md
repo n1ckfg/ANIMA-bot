@@ -1,0 +1,1 @@
+And you'd better listen up! (One of the greatest	somnambulists, the prophetess of Prevost, said in pronouncements edited by	Justinus Kerner in the early part of the nineteenth century, "The	world is a circle for me.  In this circle I could go forwards and backwards	and see what there had been and what was to come."

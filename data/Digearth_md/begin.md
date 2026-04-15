@@ -1,0 +1,2 @@
+| This is an introduction to a process. The process of discovering and creating identity. The mythologizing of history.  [Begin here.](katrina.html)   |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|

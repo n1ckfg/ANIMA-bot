@@ -1,0 +1,17 @@
+# Towards A Furious Philosophy Of The Discrete
+
+[the 'Lost Object'](fantasticutopiansex.html)
+
+The rite of displacement, an instigation of primary
+
+identification, of longing for , and centrally a longing
+
+for death as the consummation of that former longing in the undiffereniated
+
+solidity of death; the contralateral originating principal being the
+
+undiffereniated amorphousness (l'hommelette of Lacan) of original bliss
+
+and being.
+
+Matter- The stuff of Love Grown Cold

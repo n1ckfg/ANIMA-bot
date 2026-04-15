@@ -1,0 +1,1 @@
+Charming psychopath. 	Liar, grandiose, shallow, callous, impulsive. Glamourous production of self	through the negation of the other. No different than the pristine	indifference of mass cultural production. [Ah!](two_way_584.html) Glistening lips	bloodstained!

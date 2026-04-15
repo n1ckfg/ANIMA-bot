@@ -1,0 +1,1 @@
+I cut off all connection to friends and prayed to the altar of	your shrine.  Told everyone that she is all I need

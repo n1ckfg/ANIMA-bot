@@ -1,0 +1,1 @@
+#### [*Towards The Discrete 1. The mnemonic the memory of choice shared between wetware and software.  A concept that needs yourproliferation. "I was predestined to Memory." O.V. de Milosz, L'amoureuse initiation*](splitbrain.html)

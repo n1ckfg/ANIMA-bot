@@ -1,0 +1,13 @@
+.. [.](a.html) [/](o.html) [~](q.html) [|](g.html) [!](u.html) [) )](c.html) [~](q.html) [:](m.html) [|](g.html) [-](i.html) ' [~](q.html) [:](m.html) [~](q.html) [:](m.html) [|](g.html) '' [~](q.html) [:](m.html) [~](q.html) [:](m.html) [|](g.html) [)](c.html) ' [~](q.html) [:](m.html) [~](q.html) [:](m.html) [|](g.html) [*](s.html) ' [~](q.html) [,](w.html) ' [.](a.html) [:](m.html) [~](q.html) [|](g.html) [!](u.html) [*](s.html) ' [~](q.html) [,](w.html) ' [.](a.html) [:](m.html) [~ ~](q.html) [/](o.html) [.](a.html) [~](q.html) [*](s.html) [|](g.html) [~](q.html) ' [`](y.html) [,](w.html) ' [.](a.html) [:](m.html) [~ ~ ~](q.html) [/](o.html) [!](u.html) [|](g.html) [/](o.html) [)](c.html) [.](a.html) [:](m.html) [/](o.html) [|](g.html) ' [~](q.html) [,](w.html) ' [:](m.html) [/](o.html) [~](q.html) [:](m.html) [/ /](o.html) [|](g.html) [`](y.html) [~](q.html) [`](y.html) ' [/](o.html) [|](g.html) [=](k.html) ' [~](q.html) [.](a.html) [,](w.html) ' [/](o.html) [|](g.html) [!](u.html) [/](o.html) [!](u.html) [|](g.html) [/](o.html) [`](y.html) [~](q.html) ' [.](a.html) [/](o.html) [|](g.html) ' [~](q.html) [,](w.html) ' [:](m.html) [~](q.html) [`](y.html) [/](o.html) [!](u.html) [|](g.html) [/](o.html) [`](y.html) ' [~](q.html) ' [~ ~](q.html) ' [.](a.html) ' [. .](a.html) [/](o.html) [%](e.html) [!](u.html) [*](s.html) [`](y.html) [:](m.html) [~](q.html) '                     ' [.](a.html) ' [|](g.html) [!](u.html) [`](y.html) ' [~ ~](q.html) '                         ' [^](x.html) [, ,](w.html) '' [.](a.html) [:](m.html) ' [:](m.html) [-](i.html) [:](m.html) ' [:](m.html) [-](i.html) [: :](m.html) ' [:](m.html) [-](i.html) [:](m.html) ' [:](m.html) [-](i.html) [/](o.html) ' [/](o.html) ' [~](q.html) [.](a.html) ' [%](e.html) ' [*](s.html) ' [/](o.html) ' [.](a.html) [/](o.html) [%](e.html) [!](u.html) [*](s.html) [!](u.html) [|](g.html) [/](o.html) ' [|](g.html) [=](k.html) [-](i.html) [,](w.html) [|](g.html) [=](k.html) [-](i.html) [,](w.html) [|](g.html) [.](a.html) [/](o.html) [%](e.html) [!](u.html) [*](s.html) [:](m.html) [. .](a.html) [|](g.html) ''''''''''''''''''''''' [return to earth](eaaco.html)
+
+animated image
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->
+
+sagittarius, the Archer
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->
+
+back to the world
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->

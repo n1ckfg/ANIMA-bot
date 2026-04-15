@@ -1,0 +1,7 @@
+- [**Wrestling Perspective**](27Apr95.htm)
+- [**Pre-Thoughts**](13Dec91.htm)
+- [**Laugh and Learn**](31Jan92.htm)
+- [**Non-Model Communication**](02May90.htm)
+- [**Resonant Holography**](19Oct91.htm)
+- [**Metaphors**](08Sep88.htm)
+- [**Perspective**](31Jan87.htm)

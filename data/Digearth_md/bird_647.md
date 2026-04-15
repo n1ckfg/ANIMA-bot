@@ -1,0 +1,1 @@
+As I wrote this: A gold becked bird with	the walking lilt of an aged English Victorian failed to catch a white	butterfly.  The erratic flight pattern of a butterfly is a reflection, an	aspect of its very vulnerability.  A compensation. A strategy for	survival. [The	impossiblity of prediction indicative of	efficience](not_found_565.html) .

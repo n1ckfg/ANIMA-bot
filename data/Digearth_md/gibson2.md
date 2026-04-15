@@ -1,0 +1,3 @@
+#### [**ON LINE!**](internet.html)
+
+......."I'm not Wintermute now."  "So what are you." He drank from the flask, feeling nothing.  "I'm the matrix, Case."  Case laughed.  "Where's that get you?"  "Nowhere. everywhere.  I'm the sum total of the works, the whole show." (and later......)   "But what do you do?  You just there?" Case shrugged......"I talk to my own kind."   "But you're the whole thing.  Talk to yourself?"  "There's others.  I found one already.  Series of transmissions recorder over a period of eight years, in the nineteen-seventies..."   "From where?"  "Centauri system."  "Oh," Case said. "Yeah?  No shit?"  "No shit."  -- NEUROMANCER (Coda), William Gibson, Vancouver 1983.

@@ -1,0 +1,3 @@
+#### [**PRESS HERE for RULES!**](rules2.html)
+
+"WHAT A DOWNER ALL THIS IS!" you suddenly realize. "HEY, LET'S HAVE A BREW, DISCUSS THIS MORE!"........so we stroll down Commercial Drive....towards Sunset Boulevard.....to ANALYZE THIS MESS.....stroll on, with our PRISON NOTEBOOKS in our hands, talking REVOLUTION, the WORKER'S DREAM, DEMOCRACY, UTOPIA, ANARCHY and other Greek NONSENSE.........

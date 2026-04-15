@@ -1,0 +1,1 @@
+[**INTERNÉ .**](natif47.html)

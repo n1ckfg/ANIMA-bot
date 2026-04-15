@@ -1,0 +1,1 @@
+fractured self without centre, singularity,	direction, concentration, [memory.](ocean_755.html)

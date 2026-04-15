@@ -1,0 +1,1 @@
+I look out over a plain to the mountain horizon covered in	a gray of clouds.

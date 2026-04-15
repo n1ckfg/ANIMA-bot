@@ -1,0 +1,13 @@
+' [/](o.html) [~](q.html) '                     ' [.](a.html) [~ ~](q.html) ' ' ' ' ' '                  ' [.](a.html) [~](q.html) [`](y.html) [.](a.html) [: :](m.html) [.](a.html) [` `](y.html) [.](a.html) [`](y.html) [.](a.html) '             ' [/](o.html) [.](a.html) [!](u.html) [/](o.html) [-](i.html) [|](g.html) [!](u.html) [,](w.html) [=](k.html) [-](i.html) [|](g.html) [!](u.html) [:](m.html) [` `](y.html) '           ' [~](q.html) [|](g.html) [/](o.html) [%](e.html) [|](g.html) [/](o.html) [, ,](w.html) [/](o.html) [%](e.html) [|](g.html) [/](o.html) [%](e.html) ' [:](m.html) [`](y.html) ''         ' [/](o.html) [|](g.html) [*](s.html) [~](q.html) [=](k.html) [/](o.html) [-](i.html) [|](g.html) [/](o.html) [%](e.html) [|](g.html) [/](o.html) [.](a.html) [!](u.html) [=](k.html) [:](m.html) [|](g.html) [~](q.html) '       ' [`](y.html) [~](q.html) [/](o.html) [)](c.html) [|](g.html) [/](o.html) [,](w.html) [|](g.html) [/](o.html) [%](e.html) [|](g.html) [/](o.html) [%](e.html) [,](w.html) [=](k.html) [`](y.html) [|](g.html) [!](u.html) '          ' [)](c.html) [|](g.html) [/](o.html) [%](e.html) [:](m.html) [/](o.html) [`](y.html) [!](u.html) [`](y.html) [~](q.html) [|](g.html) [/](o.html) [-](i.html) [|](g.html) [:](m.html) [|](g.html) [:](m.html) [~](q.html) '         ' [*](s.html) [|](g.html) [/](o.html) [-](i.html) [|](g.html) [/](o.html) [%](e.html) [`](y.html) [/](o.html) [%](e.html) [*](s.html) [|](g.html) [/](o.html) [-](i.html) [|](g.html) [/](o.html) [%](e.html) [~](q.html) '         ' [~](q.html) [|](g.html) [/](o.html) [-](i.html) [`](y.html) [=](k.html) [%](e.html) [,](w.html) [/](o.html) [.](a.html) [|](g.html) [/](o.html) [-](i.html) [|](g.html) [/](o.html) [%](e.html) [)](c.html) '       ' [^](x.html) ' [~](q.html) [|](g.html) [/](o.html) [,](w.html) [|](g.html) [/](o.html) [-](i.html) [|](g.html) [/](o.html) [%](e.html) [!](u.html) [/](o.html) [%](e.html) [|](g.html) [~](q.html) '          '  ' [`](y.html) [~](q.html) [|](g.html) [=](k.html) [%](e.html) [|](g.html) [/](o.html) [,](w.html) [|](g.html) [/](o.html) [%](e.html) [*](s.html) [~](q.html) '            '    ' [`](y.html) [~ ~](q.html) [| |](g.html) [*](s.html) [~](q.html) [`](y.html) '                         ' [.](a.html) [:](m.html) [~](q.html) ' [return to earth](eaaco.html)
+
+animatedimage
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->
+
+the Champion
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->
+
+back to the world
+
+<!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->

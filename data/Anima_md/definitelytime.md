@@ -1,0 +1,35 @@
+# Towards A Furious Philosophy Of The Discrete
+
+## Hypocrites
+
+`As we become more and more determined to be irresponsible to the 
+communities interest we will experience more and more profoundly the 
+disintegration of the community.  
+
+The propaganda of the State complaining that it must devolve from its 
+responsibilities for lack of resources is an obvious falsehood.  The wealth of the 
+community is simply being channeled into the hands of` [`already wealthy 
+individuals, corporations, and corrupt institutions.`](chiapas.html) `A financial aristocracy rules the country.  Individuals like Conrad Black.  
+Born with the silver spoon, yet acting as if a self-made man, perpetuating 
+the myth of the democratic nature of pure capitalism.    
+ 
+20% of Canada's population owns 70% of the wealth of the country.   
+The poor (almost all the artists of course) that's 20% of the population, 
+owns -0.3 % of the wealth.  That's minus 0 point 3 per cent of the wealth. 
+The struggling poor (the next 20%) owns about 2.4% of the wealth.  
+The lower and upper middle class owns about 30% (Statscan.) "You saw what's common, that which happens all the time.
+But we are asking for:
+That which is not alien, find it strange!
+That which is common, find it inexplicable!
+What is usual should amaze you.
+What is the rule recognize as misuse
+And where you find misuse
+Take remedial measures!"` *`Brecht, The Exception and the Rule`* `So, by the by, what are you, you, the well-paid middle managers, 
+tenured academics, and well off intellectual worker going to do about 
+this obvious disparity ?  (Not to mention the needs that must be addressed 
+of the exploited elsewhere in the world?)
+
+It is definitely time to put your money where your mouth, 
+- or at least where your mouth use to be.  It's time you came up with strategies 
+to spread the wealth around...job sharing would be in order for 
+example, as would early 'retirement'. hypocrite.html/cisr/oliver@cisr.bc.ca`

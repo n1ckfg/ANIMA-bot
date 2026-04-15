@@ -1,0 +1,3 @@
+|    |                                                                                                                                                             |    |    |
+|----|-------------------------------------------------------------------------------------------------------------------------------------------------------------|----|----|
+|    | [**SYSTEM**](agitp/shell/lies.html)  <!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->  [LOGIC](quest671.htm) |    |    |

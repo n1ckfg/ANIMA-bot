@@ -1,0 +1,1 @@
+Your absence is	recovered in aspects of others that I mistake in the street. A perversion of vision occurs, a modelling and graphing of you perfumed	from the occasions of our sexual intoxications.

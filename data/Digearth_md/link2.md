@@ -1,0 +1,1 @@
+##### [View with Netscape 2.0 , let document overridecolours in preferences, preferred font: Eyechart. Install Plug-Ins: Real Audio , Talker , ViewMovie , and Shockwave.](http://home.netscape.com/)

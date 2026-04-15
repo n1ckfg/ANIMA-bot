@@ -1,0 +1,3 @@
+| Spirit Finder HOME  <!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->                                                                                                                       |                     |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
+| <!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->  digital eARTh HOME  <!-- 🖼️❌ Image not available. Please use `PdfPipelineOptions(generate_picture_images=True)` -->  **Starting Points** | **Stopping Points** |

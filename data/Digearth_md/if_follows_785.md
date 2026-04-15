@@ -1,0 +1,1 @@
+Should mention here that my father took part in the bombing	of Dresden.  He was a navigator for the R.A.F.  Part of a Lancaster's	bombing crew.  He was maybe 20 years old at the time.  Can't but have	effected him all his life.

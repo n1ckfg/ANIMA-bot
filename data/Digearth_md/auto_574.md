@@ -1,0 +1,1 @@
+Iam unsure if you are as	complicated as I imagine you to be, or if you act automatically from your	unconscious life, and make superficial movements based on unexamined	desires.  I want you to be more complex...When you phoned that night,

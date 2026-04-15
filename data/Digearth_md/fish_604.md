@@ -1,0 +1,1 @@
+mine still vibrates in my soul	as a jagged fish hook, a curse that attempts unceasingly to find a light, a	space in your glacial countenance.  To sharpen.  To bring to a luminosity.

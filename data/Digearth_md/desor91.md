@@ -1,0 +1,13 @@
+**MAGISTRALE**
+
+[**ÉRECTION**](desor92.html)
+
+XXX STUFF FOLLOWING (?)
+
+PEOPLES LESS THAN 21 YEARS OLD PLEASE EJECT (?!)
+
+... OTHERS, ERECT (!)
+
+means:
+
+**ERECTION**

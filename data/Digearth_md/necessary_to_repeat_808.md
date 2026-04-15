@@ -1,0 +1,1 @@
+I began by saying that I didn't want to talk about it anymore, that whenever	I started to talk about it I would end up feeling bad for at least two days.	 That I had gone through the catharsis and I didn't really need to relive	the pain.

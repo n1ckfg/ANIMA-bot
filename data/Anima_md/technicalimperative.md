@@ -1,0 +1,37 @@
+# Towards A Furious Philosophy Of The Discrete
+
+# Fear
+
+[tyranny](war.html)
+
+the technologicalteleological imperatives.  The of
+
+meaningful assertion
+
+of life.(Meaning as survival objective).
+
+Paranoia as a predictable outcome of
+
+the questioning and answering of this assertion.
+
+Then the branding of name as
+
+the strategic holocaust that slices
+
+[the](splitbrain.html)
+
+[tongue lengthwise in two](splitbrain.html)
+
+then stitched and
+
+bound and filling the mouth of
+
+yet another midget
+
+with their ticket in hand on their
+
+merry way to
+
+[the circus](progress.html) .
+
+technicalimperative.html/cisr/oliver@cisr.bc.ca

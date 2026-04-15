@@ -1,0 +1,1 @@
+She wrote: "I wanted to phone - again- but I just can't afford it.  I want to talk	to you everyday.  Each and everyday. I miss your voice.  Miss our	conversations.  Especially miss your touches."

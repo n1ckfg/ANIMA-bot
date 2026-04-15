@@ -1,0 +1,1 @@
+### *My father was a bombing navigator during WW II. He also liked taking photographs.*

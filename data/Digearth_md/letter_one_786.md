@@ -1,0 +1,1 @@
+(She wrote) "Wore [the Celtic brooch](more_prophets_705.html) today at the	press conference.  Lots of people commented on what an extraordinary piece	it is! [Some people	thought it was Asian.](glance_of_the_eye_039.html) Thank you so much for the gift." Ifeel like piercing my skin with it, over my sad heart. Missing you so much."
