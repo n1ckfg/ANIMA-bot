@@ -4,7 +4,7 @@
 llm:
   # Backend: "ollama", "llamacpp", or "openai"
   backend: "ollama"
-  model: "qwen3.5:35b-a3b-coding-nvfp4"
+  model: "llama3.1:8b"
   request_timeout: 360
 
   # Ollama-specific settings
