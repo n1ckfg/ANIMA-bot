@@ -10,6 +10,8 @@ docling
 pyyaml
 rank-bm25              # For hybrid BM25 search
 diskcache              # For query/embedding caching
+python-dotenv          # For loading .env files
 
 # Optional LLM backends (uncomment as needed):
-# llama-index-llms-openai      # For OpenAI API or compatible servers
+llama-index-llms-openai       # For OpenAI API
+llama-index-llms-openai-like  # For OpenRouter, LM Studio, vLLM, etc.

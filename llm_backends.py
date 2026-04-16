@@ -8,6 +8,11 @@ Supported backends: ollama, llamacpp, openai
 import os
 from typing import Any
 
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 def create_llm(config: dict) -> Any:
     """
@@ -95,7 +100,36 @@ def _create_llamacpp(timeout: float, settings: dict) -> Any:
 
 
 def _create_openai(model: str, timeout: float, settings: dict) -> Any:
-    """Create OpenAI-compatible LLM instance."""
+    """Create OpenAI or OpenAI-compatible LLM instance."""
+    # Priority: config.yaml > .env > environment
+    api_key = settings.get("api_key") or os.environ.get("OPENAI_API_KEY")
+    api_base = settings.get("api_base") or os.environ.get("OPENAI_API_BASE")
+
+    # Allow model override from environment
+    model = os.environ.get("OPENAI_MODEL") or model
+
+    # Use OpenAILike for non-OpenAI providers (OpenRouter, LM Studio, etc.)
+    if api_base:
+        try:
+            from llama_index.llms.openai_like import OpenAILike
+        except ImportError:
+            raise ImportError(
+                "OpenAI-compatible backends require llama-index-llms-openai-like. "
+                "Install with: pip install llama-index-llms-openai-like"
+            )
+
+        context_window = settings.get("context_window", 8192)
+
+        return OpenAILike(
+            model=model,
+            api_key=api_key,
+            api_base=api_base,
+            context_window=context_window,
+            is_chat_model=True,
+            timeout=timeout,
+        )
+
+    # Use standard OpenAI for actual OpenAI API
     try:
         from llama_index.llms.openai import OpenAI
     except ImportError:
@@ -104,9 +138,6 @@ def _create_openai(model: str, timeout: float, settings: dict) -> Any:
             "Install with: pip install llama-index-llms-openai"
         )
 
-    api_key = settings.get("api_key") or os.environ.get("OPENAI_API_KEY")
-    api_base = settings.get("api_base")
-
     kwargs = {
         "model": model,
         "timeout": timeout,
@@ -114,9 +145,6 @@ def _create_openai(model: str, timeout: float, settings: dict) -> Any:
 
     if api_key:
         kwargs["api_key"] = api_key
-
-    if api_base:
-        kwargs["api_base"] = api_base
 
     return OpenAI(**kwargs)
 
@@ -136,8 +164,14 @@ def get_backend_info(config: dict) -> str:
         return f"llama.cpp ({os.path.basename(model_path)})"
 
     elif backend == "openai":
-        api_base = llm_config.get("openai", {}).get("api_base")
+        settings = llm_config.get("openai", {})
+        api_base = settings.get("api_base") or os.environ.get("OPENAI_API_BASE")
+        model = os.environ.get("OPENAI_MODEL") or model
+
         if api_base:
+            # Extract provider name from URL for cleaner display
+            if "openrouter" in api_base:
+                return f"OpenRouter ({model})"
             return f"OpenAI-compatible ({model}) at {api_base}"
         return f"OpenAI ({model})"
 

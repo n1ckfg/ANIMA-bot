@@ -116,10 +116,13 @@ def reindex():
 
 
 if __name__ == '__main__':
-    # Initialize RAG system on startup
-    print("Initializing RAG system...")
-    get_rag()
-    print("RAG system ready!")
+    import os
+
+    # With debug=True, Flask spawns a reloader subprocess. Only init there.
+    if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+        print("Initializing RAG system...")
+        get_rag()
+        print("RAG system ready!")
 
     logging.getLogger('werkzeug').setLevel(logging.ERROR)
     app.run(debug=True, host='0.0.0.0', port=8080)

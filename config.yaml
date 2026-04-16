@@ -18,9 +18,12 @@ llm:
     n_gpu_layers: -1  # -1 = use all available GPU layers
 
   # OpenAI-compatible API settings (used when backend: "openai")
+  # Supports: OpenAI, OpenRouter, LM Studio, vLLM, etc.
+  # API key and base URL can also be set in .env file
   openai:
-    api_base: null  # Set for local servers like LM Studio
-    api_key: null   # Set via OPENAI_API_KEY env var if null
+    api_base: null  # Examples: https://openrouter.ai/api/v1, http://localhost:1234/v1
+    api_key: null   # Set via OPENAI_API_KEY in .env file (recommended)
+    context_window: 8192  # Required for non-OpenAI providers (OpenRouter, LM Studio, etc.)
 
 embeddings:
   provider: "BAAI"
