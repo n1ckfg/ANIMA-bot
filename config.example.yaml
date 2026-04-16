@@ -24,13 +24,20 @@ llm:
     base_url: "http://localhost:11434"
 
   # --- llama.cpp Settings ---
-  # Requires: pip install llama-index-llms-llama-cpp
+  # Two modes: local GGUF loading OR remote llama-server connection
+  # Local requires: pip install llama-index-llms-llama-cpp
+  # Remote requires: pip install llama-index-llms-openai-like
   llamacpp:
-    # Path to GGUF model file
+    # Remote mode: connect to llama-server (null = use local mode)
+    # Start server with: llama-server -m model.gguf --port 11434
+    base_url: null  # e.g., "http://localhost:11434/v1"
+    # Model name for llama-server (ignored in local mode)
+    model: "local"
+    # Path to GGUF model file (used in local mode only)
     model_path: "./models/your-model.gguf"
     # Context window size
     n_ctx: 4096
-    # GPU layers (-1 = all, 0 = CPU only)
+    # GPU layers (-1 = all, 0 = CPU only, local mode only)
     n_gpu_layers: -1
 
   # --- OpenAI-compatible Settings ---

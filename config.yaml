@@ -12,8 +12,11 @@ llm:
     model: "llama3.1:8b"
 
   # llama.cpp-specific settings (used when backend: "llamacpp")
+  # Can either load a local GGUF model OR connect to a llama-server instance
   llamacpp:
-    model_path: "/Users/nick/Development/ML/Models/llama.cpp/Qwopus3.5-9B-v3-Q4_K_M.gguf"
+    base_url: null  # If set, connects to llama-server (e.g., "http://localhost:11434/v1")
+    model_path: "/Users/nick/Development/ML/Models/llama.cpp/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
+    model: "local"  # Model name for llama-server (ignored when using model_path)
     n_ctx: 32768
     n_gpu_layers: -1  # -1 = use all available GPU layers
 

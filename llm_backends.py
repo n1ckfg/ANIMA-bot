@@ -69,7 +69,37 @@ def _create_ollama(timeout: float, settings: dict) -> Any:
 
 
 def _create_llamacpp(timeout: float, settings: dict) -> Any:
-    """Create llama.cpp LLM instance."""
+    """Create llama.cpp LLM instance.
+
+    Supports two modes:
+    - Remote: Connect to a llama-server instance via base_url (OpenAI-compatible API)
+    - Local: Load a GGUF model directly via model_path
+    """
+    base_url = settings.get("base_url")
+
+    # Remote mode: connect to llama-server via OpenAI-compatible API
+    if base_url:
+        try:
+            from llama_index.llms.openai_like import OpenAILike
+        except ImportError:
+            raise ImportError(
+                "llama.cpp server backend requires llama-index-llms-openai-like. "
+                "Install with: pip install llama-index-llms-openai-like"
+            )
+
+        model = settings.get("model", "local")
+        n_ctx = settings.get("n_ctx", 4096)
+
+        return OpenAILike(
+            model=model,
+            api_base=base_url,
+            api_key="not-needed",  # llama-server doesn't require auth by default
+            context_window=n_ctx,
+            is_chat_model=True,
+            timeout=timeout,
+        )
+
+    # Local mode: load GGUF model directly
     try:
         from llama_index.llms.llama_cpp import LlamaCPP
     except ImportError:
@@ -80,7 +110,7 @@ def _create_llamacpp(timeout: float, settings: dict) -> Any:
 
     model_path = settings.get("model_path")
     if not model_path:
-        raise ValueError("llamacpp backend requires 'model_path' in config")
+        raise ValueError("llamacpp backend requires 'model_path' or 'base_url' in config")
 
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"Model file not found: {model_path}")
@@ -159,7 +189,12 @@ def get_backend_info(config: dict) -> str:
         return f"Ollama ({model}) at {base_url}"
 
     elif backend == "llamacpp":
-        model_path = llm_config.get("llamacpp", {}).get("model_path", "unknown")
+        settings = llm_config.get("llamacpp", {})
+        base_url = settings.get("base_url")
+        if base_url:
+            model = settings.get("model", "local")
+            return f"llama.cpp server ({model}) at {base_url}"
+        model_path = settings.get("model_path", "unknown")
         return f"llama.cpp ({os.path.basename(model_path)})"
 
     elif backend == "openai":
