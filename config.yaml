@@ -3,13 +3,13 @@
 
 llm:
   # Backend: "ollama", "llamacpp", or "openai"
-  backend: "llamacpp"
-  model: "llama3.1:8b"
+  backend: "openai"
   request_timeout: 360
 
   # Ollama-specific settings
   ollama:
     base_url: "http://localhost:11434"
+    model: "llama3.1:8b"
 
   # llama.cpp-specific settings (used when backend: "llamacpp")
   llamacpp:
@@ -21,7 +21,8 @@ llm:
   # Supports: OpenAI, OpenRouter, LM Studio, vLLM, etc.
   # API key and base URL can also be set in .env file
   openai:
-    api_base: null  # Examples: https://openrouter.ai/api/v1, http://localhost:1234/v1
+    model: "openrouter/free"  # Or use OPENAI_MODEL env var
+    api_base: "https://openrouter.ai/api/v1"  # Examples: https://openrouter.ai/api/v1, http://localhost:1234/v1
     api_key: null   # Set via OPENAI_API_KEY in .env file (recommended)
     context_window: 32768  # Required for non-OpenAI providers (OpenRouter, LM Studio, etc.)
 

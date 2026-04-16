@@ -79,9 +79,11 @@ def get_default_config() -> dict:
     return {
         "llm": {
             "backend": "ollama",
-            "model": "llama3.1:8b",
             "request_timeout": 360,
-            "ollama": {"base_url": "http://localhost:11434"},
+            "ollama": {
+                "base_url": "http://localhost:11434",
+                "model": "llama3.1:8b",
+            },
         },
         "embeddings": {
             "provider": "BAAI",

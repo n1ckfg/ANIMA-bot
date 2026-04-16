@@ -30,17 +30,16 @@ def create_llm(config: dict) -> Any:
     """
     llm_config = config.get("llm", {})
     backend = llm_config.get("backend", "ollama").lower()
-    model = llm_config.get("model", "llama3.1:8b")
     timeout = llm_config.get("request_timeout", 360)
 
     if backend == "ollama":
-        return _create_ollama(model, timeout, llm_config.get("ollama", {}))
+        return _create_ollama(timeout, llm_config.get("ollama", {}))
 
     elif backend == "llamacpp":
         return _create_llamacpp(timeout, llm_config.get("llamacpp", {}))
 
     elif backend == "openai":
-        return _create_openai(model, timeout, llm_config.get("openai", {}))
+        return _create_openai(timeout, llm_config.get("openai", {}))
 
     else:
         raise ValueError(
@@ -49,7 +48,7 @@ def create_llm(config: dict) -> Any:
         )
 
 
-def _create_ollama(model: str, timeout: float, settings: dict) -> Any:
+def _create_ollama(timeout: float, settings: dict) -> Any:
     """Create Ollama LLM instance."""
     try:
         from llama_index.llms.ollama import Ollama
@@ -60,6 +59,7 @@ def _create_ollama(model: str, timeout: float, settings: dict) -> Any:
         )
 
     base_url = settings.get("base_url", "http://localhost:11434")
+    model = settings.get("model", "llama3.1:8b")
 
     return Ollama(
         model=model,
@@ -99,14 +99,12 @@ def _create_llamacpp(timeout: float, settings: dict) -> Any:
     )
 
 
-def _create_openai(model: str, timeout: float, settings: dict) -> Any:
+def _create_openai(timeout: float, settings: dict) -> Any:
     """Create OpenAI or OpenAI-compatible LLM instance."""
     # Priority: config.yaml > .env > environment
     api_key = settings.get("api_key") or os.environ.get("OPENAI_API_KEY")
     api_base = settings.get("api_base") or os.environ.get("OPENAI_API_BASE")
-
-    # Allow model override from environment
-    model = os.environ.get("OPENAI_MODEL") or model
+    model = settings.get("model") or os.environ.get("OPENAI_MODEL") or "gpt-4o-mini"
 
     # Use OpenAILike for non-OpenAI providers (OpenRouter, LM Studio, etc.)
     if api_base:
@@ -153,10 +151,11 @@ def get_backend_info(config: dict) -> str:
     """Return a human-readable string describing the configured backend."""
     llm_config = config.get("llm", {})
     backend = llm_config.get("backend", "ollama").lower()
-    model = llm_config.get("model", "unknown")
 
     if backend == "ollama":
-        base_url = llm_config.get("ollama", {}).get("base_url", "localhost:11434")
+        settings = llm_config.get("ollama", {})
+        model = settings.get("model", "llama3.1:8b")
+        base_url = settings.get("base_url", "localhost:11434")
         return f"Ollama ({model}) at {base_url}"
 
     elif backend == "llamacpp":
@@ -166,7 +165,7 @@ def get_backend_info(config: dict) -> str:
     elif backend == "openai":
         settings = llm_config.get("openai", {})
         api_base = settings.get("api_base") or os.environ.get("OPENAI_API_BASE")
-        model = os.environ.get("OPENAI_MODEL") or model
+        model = settings.get("model") or os.environ.get("OPENAI_MODEL") or "gpt-4o-mini"
 
         if api_base:
             # Extract provider name from URL for cleaner display
