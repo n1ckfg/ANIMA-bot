@@ -15,3 +15,5 @@ python-dotenv          # For loading .env files
 # Optional LLM backends (uncomment as needed):
 llama-index-llms-openai       # For OpenAI API
 llama-index-llms-openai-like  # For OpenRouter, LM Studio, vLLM, etc.
+llama-cpp-python
+llama-index-llms-llama-cpp

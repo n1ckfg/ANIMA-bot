@@ -91,7 +91,7 @@ def _create_llamacpp(timeout: float, settings: dict) -> Any:
     return LlamaCPP(
         model_path=model_path,
         context_window=n_ctx,
-        n_gpu_layers=n_gpu_layers,
+        model_kwargs={"n_gpu_layers": n_gpu_layers},
         generate_kwargs={
             "temperature": 0.7,
             "top_p": 0.9,
