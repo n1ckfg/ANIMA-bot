@@ -1,0 +1,3 @@
+[submodule "llm-wiki-agent"]
+	path = llm-wiki-agent
+	url = https://github.com/n1ckfg/llm-wiki-agent

@@ -2,6 +2,17 @@
 
 # ANIMA-bot RAG System Setup Script
 
+# check submodules
+git pull
+git submodule init
+git submodule update --init --recursive
+git submodule sync
+git submodule foreach git checkout master 2>/dev/null
+git submodule foreach git checkout main 2>/dev/null
+git submodule foreach git reset --hard
+git submodule foreach git pull origin master 2>/dev/null
+git submodule foreach git pull origin main 2>/dev/null
+
 #CHAT_MODEL="qwen3:4b-instruct"
 CHAT_MODEL="llama3.1:8b"
 
